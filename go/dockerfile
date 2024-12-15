@@ -1,0 +1,9 @@
+FROM golang:1.23.4
+WORKDIR /app
+COPY . .
+RUN go build -o service service.go
+CMD ["/app/service"]
+
+# FROM alpine AS runner
+# COPY --from=builder /app/service .
+

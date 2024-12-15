@@ -5,15 +5,17 @@ from tensorflow import keras
 model = keras.models.load_model('digit_model.h5')
 
 image_path = 'go_image.png'
-image = Image.open(image_path).resize((28, 28)) 
-
+image = Image.open(image_path)
 image_array = np.array(image)
+print(image_array.shape)
 
 if image_array.shape[-1] == 3:
     image_array = np.dot(image_array[..., :3], [0.2989, 0.5870, 0.1140])
-
+elif image_array.shape[-1] == 4:
+    image_array = np.dot(image_array[..., :4], [0.2989, 0.5870, 0.1140, 0])
 
 def predict_digit(image):
+    print(image.shape)
     image = image.reshape(1, 28, 28)
     prediction = model.predict(image)
     return np.argmax(prediction)
