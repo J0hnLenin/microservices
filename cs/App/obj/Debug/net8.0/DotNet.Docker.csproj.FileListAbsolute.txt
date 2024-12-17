@@ -1,0 +1,15 @@
+E:\Git\microservices\cs\App\bin\Debug\net8.0\DotNet.Docker.exe
+E:\Git\microservices\cs\App\bin\Debug\net8.0\DotNet.Docker.deps.json
+E:\Git\microservices\cs\App\bin\Debug\net8.0\DotNet.Docker.runtimeconfig.json
+E:\Git\microservices\cs\App\bin\Debug\net8.0\DotNet.Docker.dll
+E:\Git\microservices\cs\App\bin\Debug\net8.0\DotNet.Docker.pdb
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.AssemblyInfoInputs.cache
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.AssemblyInfo.cs
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.csproj.CoreCompileInputs.cache
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.sourcelink.json
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.dll
+E:\Git\microservices\cs\App\obj\Debug\net8.0\refint\DotNet.Docker.dll
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.pdb
+E:\Git\microservices\cs\App\obj\Debug\net8.0\DotNet.Docker.genruntimeconfig.cache
+E:\Git\microservices\cs\App\obj\Debug\net8.0\ref\DotNet.Docker.dll

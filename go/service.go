@@ -5,12 +5,11 @@ import (
 	"image"
 	"image/color"
 	"image/png"
-	"log"
 	"math/rand"
 	"net/http"
-	"os"
 	"strconv"
 	"sync"
+	"time"
 )
 
 func generateImage(size int) image.Image {
@@ -35,18 +34,11 @@ func generateImage(size int) image.Image {
 }
 
 func imageHandler(writer http.ResponseWriter, request *http.Request) {
-	logFile, err := os.OpenFile("golang.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer logFile.Close()
-	logger := log.New(logFile, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
-
 	if request.Method != http.MethodGet {
 		message := "Invalid http method"
 		http.Error(writer, message, http.StatusMethodNotAllowed)
-		fmt.Println(message)
-		logger.Println(message)
+		timenow := time.Now().Format("2006-01-02 15:04:05")
+		fmt.Println(timenow, "ERROR:", message)
 		return
 	}
 
@@ -54,8 +46,8 @@ func imageHandler(writer http.ResponseWriter, request *http.Request) {
 	if paramValue == "" {
 		message := "Size parameter not found"
 		http.Error(writer, message, http.StatusBadRequest)
-		fmt.Println(message)
-		logger.Println(message)
+		timenow := time.Now().Format("2006-01-02 15:04:05")
+		fmt.Println(timenow, "ERROR:", message)
 		return
 	}
 
@@ -63,16 +55,16 @@ func imageHandler(writer http.ResponseWriter, request *http.Request) {
 	if err != nil || size <= 0 {
 		message := "Invalid size parameter value"
 		http.Error(writer, message, http.StatusBadRequest)
-		fmt.Println(message)
-		logger.Println(message)
+		timenow := time.Now().Format("2006-01-02 15:04:05")
+		fmt.Println(timenow, "ERROR:", message)
 		return
 	}
 
 	imageData := generateImage(size)
 
-	message := "image with size %s created\n"
-	fmt.Printf(message, paramValue)
-	logger.Printf(message, paramValue)
+	message := "created image with size"
+	timenow := time.Now().Format("2006-01-02 15:04:05")
+	fmt.Println(timenow, "INFO:", message, paramValue)
 
 	writer.Header().Set("Content-Type", "image/png")
 	png.Encode(writer, imageData)
@@ -80,9 +72,10 @@ func imageHandler(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	http.HandleFunc("/generate-image", imageHandler)
-
-	fmt.Println("server started at port 8081")
+	timenow := time.Now().Format("2006-01-02 15:04:05")
+	fmt.Println(timenow, "INFO:", "server started at port 8081")
 	if err := http.ListenAndServe(":8081", nil); err != nil {
-		log.Fatal(err)
+		timenow := time.Now().Format("2006-01-02 15:04:05")
+		fmt.Println(timenow, "ERROR:", err)
 	}
 }

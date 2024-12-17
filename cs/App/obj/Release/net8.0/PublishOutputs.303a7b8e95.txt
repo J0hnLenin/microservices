@@ -1,0 +1,5 @@
+E:\Git\microservices\cs\App\bin\Release\net8.0\publish\DotNet.Docker.exe
+E:\Git\microservices\cs\App\bin\Release\net8.0\publish\DotNet.Docker.dll
+E:\Git\microservices\cs\App\bin\Release\net8.0\publish\DotNet.Docker.deps.json
+E:\Git\microservices\cs\App\bin\Release\net8.0\publish\DotNet.Docker.runtimeconfig.json
+E:\Git\microservices\cs\App\bin\Release\net8.0\publish\DotNet.Docker.pdb

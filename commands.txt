@@ -1,0 +1,30 @@
+-------------------------------------------
+Docker
+-------------------------------------------
+docker build -t service.go:local .
+docker run --rm -p 8081:8081 service.go:local
+
+docker tag service.go:local johnlenin/microservices:go
+docker tag service.go:local johnlenin/microservices:cs
+docker push johnlenin/microservices:cs
+docker push johnlenin/microservices:go
+
+dotnet run
+dotnet publish -c Release
+-------------------------------------------
+kubernetes
+-------------------------------------------
+minikube start
+minikube stop
+
+kubectl get pods
+kubectl get nodes
+kubectl get servises
+
+kubectl exec -it <pod-name> -- /bin/bash
+
+kubectl -n kubernetes-dashboard create token admin-user
+kibectl proxy
+
+kubectl apply -f <file-name>
+kubectl delete -f <file-name>
