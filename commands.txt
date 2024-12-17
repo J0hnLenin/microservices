@@ -2,10 +2,17 @@
 Docker
 -------------------------------------------
 docker build -t service.go:local .
+docker build -t service.cs:local .
+docker build -t service.ts:local .
+
 docker run --rm -p 8081:8081 service.go:local
+docker run --rm -p 8082:8082 service.ts:local
+docker run --rm -p 8083:8083 service.py:local
 
 docker tag service.go:local johnlenin/microservices:go
-docker tag service.go:local johnlenin/microservices:cs
+docker tag service.cs:local johnlenin/microservices:cs
+docker tag service.ts:local johnlenin/microservices:ts
+
 docker push johnlenin/microservices:cs
 docker push johnlenin/microservices:go
 
