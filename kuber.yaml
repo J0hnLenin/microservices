@@ -70,3 +70,27 @@ spec:
     - port: 8082
       targetPort: 8082
 ---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: py-pod
+  labels:
+    app: py-pod
+spec:
+  containers:
+  - name: py-pod-container
+    image: johnlenin/microservices:py-v2
+    ports:
+    - containerPort: 8083
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+spec:
+  selector:
+    app: py-pod
+  ports:
+    - port: 8083
+      targetPort: 8083
+---

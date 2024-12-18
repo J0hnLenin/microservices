@@ -4,6 +4,7 @@ Docker
 docker build -t service.go:local .
 docker build -t service.cs:local .
 docker build -t service.ts:local .
+docker build -t service.py:local .
 
 docker run --rm -p 8081:8081 service.go:local
 docker run --rm -p 8082:8082 service.ts:local
@@ -11,10 +12,13 @@ docker run --rm -p 8083:8083 service.py:local
 
 docker tag service.go:local johnlenin/microservices:go
 docker tag service.cs:local johnlenin/microservices:cs
-docker tag service.ts:local johnlenin/microservices:ts
+docker tag service.ts:local johnlenin/microservices:ts-v3
+docker tag service.py:local johnlenin/microservices:py-v2
 
 docker push johnlenin/microservices:cs
 docker push johnlenin/microservices:go
+docker push johnlenin/microservices:ts-v3
+docker push johnlenin/microservices:py-v2
 
 dotnet run
 dotnet publish -c Release

@@ -1,15 +1,7 @@
-FROM ubuntu:14.04
- 
-WORKDIR /scripts 
- 
-RUN apt update 
-RUN apt upgrade -y 
-RUN apt install -y nano 
-RUN apt install software-properties-common -y 
-RUN add-apt-repository -y ppa:jblgf0/python 
-RUN apt install python-3.6.1 
-RUN apt install locales -y 
-  
-# ENV LC_ALL=ru_RU.UTF-8 
-# RUN locale-gen ru_RU  locale-gen ru_RU.UTF-8  update-locale
+
+FROM python:3.6-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 COPY . .
+CMD ["python3", "service.py"]
