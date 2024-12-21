@@ -5,20 +5,24 @@ docker build -t service.go:local .
 docker build -t service.cs:local .
 docker build -t service.ts:local .
 docker build -t service.py:local .
+docker build -t service.kt:local .
 
 docker run --rm -p 8081:8081 service.go:local
 docker run --rm -p 8082:8082 service.ts:local
 docker run --rm -p 8083:8083 service.py:local
+docker run --rm -p 8084:8084 service.kt:local
 
 docker tag service.go:local johnlenin/microservices:go
 docker tag service.cs:local johnlenin/microservices:cs
 docker tag service.ts:local johnlenin/microservices:ts-v3
 docker tag service.py:local johnlenin/microservices:py-v2
+docker tag service.kt:local johnlenin/microservices:kt
 
 docker push johnlenin/microservices:cs
 docker push johnlenin/microservices:go
 docker push johnlenin/microservices:ts-v3
 docker push johnlenin/microservices:py-v2
+docker push johnlenin/microservices:kt
 
 dotnet run
 dotnet publish -c Release
@@ -35,7 +39,7 @@ kubectl get servises
 kubectl exec -it <pod-name> -- /bin/bash
 
 kubectl -n kubernetes-dashboard create token admin-user
-kibectl proxy
+kubectl proxy
 
 kubectl apply -f <file-name>
 kubectl delete -f <file-name>
